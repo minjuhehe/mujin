@@ -123,3 +123,284 @@ button:hover {
 html {
   scroll-behavior: smooth; /* Enables smooth scrolling */
 }
+/* เพิ่มเอฟเฟกต์สำหรับปุ่มหรือลิงก์ */
+a {
+  color: #0077ff; /* สีปกติ */
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s; /* ใส่การเปลี่ยนแปลงอย่างนุ่มนวล */
+}
+/* สไตล์พื้นฐานของปุ่ม */
+a.back-to-home {
+  display: inline-block;
+  background-color: #007BFF; /* สีพื้นหลังน้ำเงิน */
+  color: white; /* สีตัวอักษร */
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px; /* มุมมน */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* เพิ่ม transition */
+}
+
+/* Animation เมื่อชี้เมาส์ */
+a.contact {
+  display: inline-block; /* ทำให้เป็นบล็อกเพื่อให้ดูเหมือนปุ่ม */
+  padding: 10px 20px; /* เพิ่มพื้นที่ภายในปุ่ม */
+  background-color: #007BFF; /* สีน้ำเงินพื้นหลัง */
+  color: white; /* สีตัวอักษร */
+  border: 2px solid #007BFF; /* กรอบสีเดียวกับพื้นหลัง */
+  border-radius: 5px; /* ทำมุมโค้งมน */
+  text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
+  text-decoration: none; /* ลบขีดเส้นใต้ */
+  font-size: 16px; /* ขนาดตัวอักษร */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* เพิ่มเอฟเฟกต์ */
+}
+a.contact:hover {
+  background-color: #dd1414; /* สีเปลี่ยนเมื่อชี้เมาส์ */
+  border-color: #dd1414; /* เปลี่ยนสีกรอบตามพื้นหลัง */
+  transform: scale(1.1); /* ขยายเล็กน้อย */
+}
+a.back-to-home {
+  display: inline-block; /* ทำให้เป็นบล็อกเพื่อให้ดูเหมือนปุ่ม */
+  padding: 10px 20px; /* เพิ่มพื้นที่ภายในปุ่ม */
+  background-color: #007BFF; /* สีน้ำเงินพื้นหลัง */
+  color: white; /* สีตัวอักษร */
+  border: 2px solid #007BFF; /* กรอบสีเดียวกับพื้นหลัง */
+  border-radius: 5px; /* ทำมุมโค้งมน */
+  text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
+  text-decoration: none; /* ลบขีดเส้นใต้ */
+  font-size: 16px; /* ขนาดตัวอักษร */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* เพิ่มเอฟเฟกต์ */
+}
+a.back-to-home:hover {
+  background-color: #dd1414; /* สีเปลี่ยนเมื่อชี้เมาส์ */
+  border-color: #dd1414; /* เปลี่ยนสีกรอบตามพื้นหลัง */
+  transform: scale(1.1); /* ขยายเล็กน้อย */
+}
+/* Keyframes สำหรับ Bounce */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+/* About Me Section */
+#about {
+  background-color: #e0f7fa; /* Light Cyan */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#about ul {
+  list-style: none;
+  padding: 0;
+}
+
+#about ul li {
+  padding: 5px 0;
+}
+
+/* Projects Section */
+#projects {
+  background-color: #fff3e0; /* Light Orange */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.project-item {
+  margin-bottom: 15px;
+}
+
+.project-item h3 {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.project-item p {
+  color: #555;
+}
+/* Animation for Sections */
+#about, #projects {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Animation for the Header Title */
+.fade-in {
+  opacity: 0; /* เริ่มต้นด้วยความโปร่งใส */
+  animation: fadeInHeader 2s ease-in-out forwards; /* ใช้ animation */
+}
+
+/* Keyframes สำหรับ Fade-In */
+@keyframes fadeInHeader {
+  from {
+    opacity: 0; /* เริ่มต้นโปร่งใส */
+    transform: translateY(-20px); /* เลื่อนขึ้นเล็กน้อย */
+  }
+  to {
+    opacity: 1; /* ปรากฏชัดเจน */
+    transform: translateY(0); /* กลับตำแหน่งปกติ */
+  }
+}
+/* Form Container */
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Input and Textarea */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Submit Button */
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #6a31a0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+/* Dynamic Content Section */
+#dynamic-content {
+  background-color: #f0f8ff; /* Light blue background */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#dynamic-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#dynamic-content p {
+  font-size: 18px;
+  font-style: italic;
+  color: #555;
+}
+/* Blog Section */
+#blog {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#blog h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.blog-post {
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post h3 {
+  font-size: 20px;
+  color: #333;
+}
+
+.blog-post p {
+  color: #666;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.read-more {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.read-more:hover {
+  background-color: #0056b3;
+}
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
