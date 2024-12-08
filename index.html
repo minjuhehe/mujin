@@ -8,29 +8,39 @@
 </head>
 <body>
   <header>
-    <h1>mj-site</h1>
+    <h1 class="fade-in">MJ-SITE</h1>
     <nav>
       <ul>
-        <li><a href="contact.html">Contact</a></li> <!-- Navigates to Contact page -->
+        <a href="contact.html" class="contact">Contact me</a>
       </ul>
-    </nav>    
-  </header>
+    </nav>
+  </header>  
   <main>
     <div id="about-contact-container">
       <section id="about">
-        <h2>Personal</h2>
-        <p>This website created using ChatGPT and a single brain cell</p>
+        <h2>About Me</h2>
+        <p>Hello! I'm Mujin, a passionate web developer who loves to create functional and beautiful websites.</p>
+        <p>Skills:</p>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Responsive Design</li>
+        </ul>
       </section>
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>
-          Email me at: 
-          <span id="email" style="cursor: pointer; color: blue; text-decoration: underline;" onclick="copyEmail()">mujin7711@gmail.com</span>
-        </p>
+      <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-item">
+          <h3>Project 1: Portfolio Website</h3>
+          <p>A fully responsive website to showcase my work and skills.</p>
+        </div>
+        <div class="project-item">
+          <h3>Project 2: ----</h3>
+          <p></p>
+        </div>
       </section>
-    </div>    
-  </main>
-
+    </div>
+  </main>  
   <script>
     function copyEmail() {
       const email = "mujin7711@gmail.com";
@@ -45,3 +55,30 @@
 </body>
 </html>
 <p>
+  <section id="dynamic-content">
+    <h2>Quote of the Day</h2>
+    <p id="quote">Loading...</p>
+  </section>
+  <script src="script.js"></script>
+  <section id="blog">
+    <h2>Latest Blogs</h2>
+    <div class="blog-post">
+      <h3>Read me!</h3>
+      <p>
+        this is for test
+      </p>
+      <a href="#" class="read-more" onclick="toggleContent(event, 'content1', this)">Read More</a>
+      <p id="content1" class="hidden">
+        Hello hope you love this website
+      </p>
+    </div>    
+  </section>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <p id="modalText">Here is more detailed information...</p>
+    </div>
+  </div>
+  <a href="#" class="read-more" onclick="showModal('HELLOOOOOOO!!!')">Read More</a>
+  
+  
