@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <h1>mujin HEHE</h1>
+    <h1>mj-site</h1>
     <nav>
       <ul>
         <li><a href="contact.html">Contact</a></li> <!-- Navigates to Contact page -->
@@ -19,12 +19,29 @@
     <div id="about-contact-container">
       <section id="about">
         <h2>Personal</h2>
-        <p>This website create be using chatgpt and single brain cell</p>
+        <p>This website created using ChatGPT and a single brain cell</p>
       </section>
       <section id="contact">
         <h2>Contact</h2>
-        <p>Email me at: mujin7711@gmail.com</p>
+        <p>
+          Email me at: 
+          <span id="email" style="cursor: pointer; color: blue; text-decoration: underline;" onclick="copyEmail()">mujin7711@gmail.com</span>
+        </p>
       </section>
     </div>    
   </main>
+
+  <script>
+    function copyEmail() {
+      const email = "mujin7711@gmail.com";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copied to clipboard!");
+      }).catch(err => {
+        alert("Failed to copy email.");
+        console.error(err);
+      });
+    }
+  </script>
 </body>
+</html>
+<p>
