@@ -1,0 +1,125 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  padding: 20px;
+}
+/* Unified Container for About and Contact */
+#about-contact-container {
+  display: flex; /* Aligns sections horizontally */
+  justify-content: space-between; /* Adds spacing between the content */
+  align-items: flex-start; /* Aligns content to the top */
+  padding: 20px; /* Adds padding inside the container */
+  background-color: #f4f8fb; /* Unified light blue background */
+  border-radius: 10px; /* Rounded corners for the whole container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  gap: 20px; /* Adds spacing between About and Contact */
+}
+
+/* Individual Sections */
+#about, #contact {
+  flex: 1; /* Makes both sections take equal space */
+  padding: 20px; /* Adds internal padding */
+  background-color: transparent; /* Makes sections blend with the container */
+  margin: 0; /* Removes individual margins */
+  border: none; /* Removes individual borders */
+  box-shadow: none; /* Removes individual shadows */
+}
+/* Contact Section */
+#contact {
+  flex: 1; /* Takes up available space */
+  background-color: #f4f8fb; /* Light blue background */
+  padding: 20px;
+  border-radius: none;
+  box-shadow: none;
+  text-align: center;
+}
+/* Contact Section */
+section#contact {
+  background-color: #f4f8fb; /* Light blue background */
+  padding: 50px 20px; /* Add spacing around the section */
+  border-radius: 10px; /* Slightly rounded corners */
+  box-shadow: none; /* Subtle shadow for depth */
+  text-align: center; /* Center text */
+}
+
+/* Form Styles */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white; /* White background for contrast */
+  border-radius: 10px; /* Rounded corners for the form */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for the form */
+}
+
+/* Labels */
+label {
+  font-weight: bold;
+  color: #333; /* Dark gray for text */
+  margin-top: 10px;
+}
+
+/* Inputs and Textarea */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+  border-color: #007BFF; /* Blue border on focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button */
+button {
+  background-color: #007BFF; /* Blue background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling */
+}
