@@ -46,13 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   // Dynamic Quotes
   const quotes = [
-    "If the problem is not fix, then keep fixing it." - Trin aranphanu
-    "Life is 10% what happens to us and 90% how we react to it." – Charles R Swindoll
-    "Success is not final, failure is not fatal: It is the courage to continue that counts." – Winston Churchill
-    "Your time is limited, so don’t waste it living someone else’s life." – Steve Jobs
-    "The only way to do great work is to love what you do." – Steve Jobs
-  ];
-
+  "If the problem is not fix, then keep fixing it. - Trin Aranphanu",
+  "Life is 10% what happens to us and 90% how we react to it. – Charles R Swindoll",
+  "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
+  "Your time is limited, so don’t waste it living someone else’s life. – Steve Jobs",
+  "The only way to do great work is to love what you do. – Steve Jobs"
+];
   const quoteElement = document.getElementById("quote");
   const randomIndex = Math.floor(Math.random() * quotes.length);
   quoteElement.textContent = quotes[randomIndex];
