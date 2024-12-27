@@ -51,11 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "Success is not final, failure is not fatal: It is the courage to continue that counts." – Winston Churchill
     "Your time is limited, so don’t waste it living someone else’s life." – Steve Jobs
     "The only way to do great work is to love what you do." – Steve Jobs
-    “The best way to predict the future is to create it.” – Peter Drucker
-    “Happiness is not something ready made. It comes from your own actions.” – Dalai Lama 
-    “Do what you can, with what you have, where you are.” – Theodore Roosevelt
-    “It always seems impossible until it’s done.” – Nelson Mandela
-    “Don’t watch the clock; do what it does. Keep going.” – Sam Levenson
   ];
 
   const quoteElement = document.getElementById("quote");
