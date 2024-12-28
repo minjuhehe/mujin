@@ -190,10 +190,10 @@ a.back-to-home:hover {
 #about {
   background-color: #e0f7fa; /* Light Cyan */
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 50px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  height: 250px;
+  height: 280px;
   width: 50%;
 }
 
@@ -210,10 +210,10 @@ a.back-to-home:hover {
 #projects {
   background-color: #fff3e0; /* Light Orange */
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 50px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  height: 250px;
+  height: 280px;
   width: 50%;
 }
 
@@ -299,8 +299,8 @@ button:hover {
 /* Dynamic Content Section */
 #dynamic-content {
   background-color: #f0f8ff; /* Light blue background */
-  padding: 20px;
-  border-radius: 10px;
+  padding: 30px;
+  border-radius: 50px;
   text-align: center;
   margin-top: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
