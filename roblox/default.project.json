@@ -1,0 +1,23 @@
+{
+  "name": "zombie-skill-effects",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "SkillConfig": {
+        "$path": "src/ReplicatedStorage/SkillConfig.lua"
+      }
+    },
+    "ServerScriptService": {
+      "SkillServer": {
+        "$path": "src/ServerScriptService/SkillServer.server.lua"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "SkillClient": {
+          "$path": "src/StarterPlayerScripts/SkillClient.client.lua"
+        }
+      }
+    }
+  }
+}
