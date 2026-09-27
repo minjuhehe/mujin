@@ -9,7 +9,12 @@ local Debris = game:GetService("Debris")
 local CollectionService = game:GetService("CollectionService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Config = require(ReplicatedStorage:WaitForChild("SkillConfig"))
+print("[SkillServer] started")
+local configModule = ReplicatedStorage:WaitForChild("SkillConfig", 10)
+if not configModule then
+	error("[SkillServer] SkillConfig not found. Put a ModuleScript named SkillConfig in ReplicatedStorage.")
+end
+local Config = require(configModule)
 local S = Config.Settings
 
 -- =====================================================================
@@ -1823,6 +1828,7 @@ local function buildTemplate()
 		return
 	end
 	model.Name = "Zombie"
+	print("[SkillServer] zombie template ready, spawning zombies")
 	local animate = model:FindFirstChild("Animate")
 	if animate then
 		animate:Destroy()

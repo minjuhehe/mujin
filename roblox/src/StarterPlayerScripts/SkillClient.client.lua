@@ -9,13 +9,16 @@ local TweenService = game:GetService("TweenService")
 local Lighting = game:GetService("Lighting")
 local CollectionService = game:GetService("CollectionService")
 
-local Config = require(ReplicatedStorage:WaitForChild("SkillConfig"))
+print("[SkillClient] started")
+local configModule = ReplicatedStorage:WaitForChild("SkillConfig", 10)
+if not configModule then
+	error("[SkillClient] SkillConfig not found. Put a ModuleScript named SkillConfig in ReplicatedStorage.")
+end
+local Config = require(configModule)
 local S = Config.Settings
-local remotes = ReplicatedStorage:WaitForChild("SkillRemotes")
-local CastSkill = remotes:WaitForChild("CastSkill")
-local TogglePassive = remotes:WaitForChild("TogglePassive")
-local CooldownEvent = remotes:WaitForChild("Cooldown")
-local FX = remotes:WaitForChild("SkillFX")
+
+-- remotes are created by SkillServer; they are filled in at the bottom of this script
+local CastSkill, TogglePassive, CooldownEvent, FX
 
 local player = Players.LocalPlayer
 local mouse = player:GetMouse()
@@ -82,13 +85,16 @@ local function cast(id, fromButton)
 		target = mouse.Hit.Position
 	end
 	target = target or densestZombie(S.MaxCastRange) or (root.Position + root.CFrame.LookVector * 25)
-	CastSkill:FireServer(id, target)
+	if CastSkill then
+		CastSkill:FireServer(id, target)
+	end
 end
 
 -- =====================================================================
 -- UI
 -- =====================================================================
-local small = workspace.CurrentCamera.ViewportSize.X < 700
+local camera = workspace.CurrentCamera
+local small = camera ~= nil and camera.ViewportSize.X < 700
 local BTN = small and Vector2.new(46, 54) or Vector2.new(64, 76)
 
 local function corner(parent, r)
@@ -193,7 +199,9 @@ end
 
 local function togglePassive(id)
 	passiveOn[id] = not passiveOn[id]
-	TogglePassive:FireServer(id, passiveOn[id])
+	if TogglePassive then
+		TogglePassive:FireServer(id, passiveOn[id])
+	end
 	refreshPassive(id)
 end
 
@@ -287,14 +295,14 @@ UserInputService.InputBegan:Connect(function(input, processed)
 	end
 end)
 
-CooldownEvent.OnClientEvent:Connect(function(id, seconds)
+local function onCooldown(id, seconds)
 	readyAt[id] = os.clock() + seconds
 	local b = buttons[id]
 	if b then
 		b.button.Size = UDim2.fromOffset(BTN.X * 1.1, BTN.Y * 1.1)
 		TweenService:Create(b.button, TweenInfo.new(0.25, Enum.EasingStyle.Back), { Size = UDim2.fromOffset(BTN.X, BTN.Y) }):Play()
 	end
-end)
+end
 
 -- auto-cast: fire any ready skill at the biggest zombie group nearby
 task.spawn(function()
@@ -319,7 +327,7 @@ local flashFx = Instance.new("ColorCorrectionEffect")
 flashFx.Name = "SkillFlash"
 flashFx.Parent = Lighting
 
-FX.OnClientEvent:Connect(function(kind, pos, a, b)
+local function onFx(kind, pos, a, b)
 	local cam = workspace.CurrentCamera
 	local dist = (cam.Focus.Position - pos).Magnitude
 	local range = b or 80
@@ -334,7 +342,7 @@ FX.OnClientEvent:Connect(function(kind, pos, a, b)
 		flashFx.Brightness = 0.3 * falloff
 		TweenService:Create(flashFx, TweenInfo.new(0.45), { TintColor = Color3.new(1, 1, 1), Brightness = 0 }):Play()
 	end
-end)
+end
 
 local rng = Random.new()
 RunService.RenderStepped:Connect(function(dt)
@@ -363,3 +371,33 @@ RunService.RenderStepped:Connect(function(dt)
 		hum.CameraOffset = Vector3.zero
 	end
 end)
+
+-- =====================================================================
+-- Connect to SkillServer (the skill bar is already visible even if this fails)
+-- =====================================================================
+local remotes = ReplicatedStorage:WaitForChild("SkillRemotes", 10)
+if not remotes then
+	local msg = label(gui, "SkillServer not found: put a Script named SkillServer in ServerScriptService, then check the Output window for red errors.", 16, {
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.new(0.5, 0, 0, 60),
+		Size = UDim2.new(0.8, 0, 0, 60),
+		TextWrapped = true,
+		TextColor3 = Color3.fromRGB(255, 110, 110),
+		TextStrokeTransparency = 0.3,
+	})
+	warn("[SkillClient] " .. msg.Text)
+	remotes = ReplicatedStorage:WaitForChild("SkillRemotes")
+	msg:Destroy()
+end
+CastSkill = remotes:WaitForChild("CastSkill")
+TogglePassive = remotes:WaitForChild("TogglePassive")
+CooldownEvent = remotes:WaitForChild("Cooldown")
+FX = remotes:WaitForChild("SkillFX")
+CooldownEvent.OnClientEvent:Connect(onCooldown)
+FX.OnClientEvent:Connect(onFx)
+for id, on in passiveOn do
+	if not on then
+		TogglePassive:FireServer(id, false)
+	end
+end
+print("[SkillClient] connected to SkillServer")
